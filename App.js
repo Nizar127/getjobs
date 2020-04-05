@@ -19,9 +19,20 @@ import FeedDetail from './src/main/FeedDetail';
 import AvailabilityView from './src/screen/user_profile/availabilityView';
 import JobComplete from './src/screen/user_profile/jobComplete';
 import OnGoingJob from './src/screen/user_profile/OnGoingJob';
+import UserProfile from './src/screen/user_profile/UserProfile';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import ProgressList from './src/screen/Progress/ProgressList';
+import Personal from './src/screen/account/Personal';
+import PersonalSkill from './src/screen/account/PersonalSkill';
+import Contact from './src/screen/account/Contact';
+import JobType from './src/screen/account/JobType';
+import Privacy from './src/screen/account/Privacy';
+import Resume from './src/screen/account/Resume';
+import WorkSkill from './src/screen/account/WorkSkill';
+import Support from './src/screen/account/Support';
+import PaymentSetting from './src/screen/account/PaymentSetting';
+import Reward from './src/screen/account/Reward';
 
 // const AppStack = createStackNavigator({
 //   Home: Home,
@@ -63,7 +74,18 @@ const DashboardStackNavigator = createStackNavigator(
     ProgressList: ProgressList,
     AvailabilityView: AvailabilityView,
     OnGoingJob: OnGoingJob,
-    JobComplete: JobComplete
+    JobComplete: JobComplete,
+    UserProfile: UserProfile,
+    Personal:Personal,
+    WorkSkill:WorkSkill,
+    PaymentSetting:PaymentSetting,
+    Contact:Contact,
+    Reward:Reward,
+    JobType:JobType,
+    Privacy:Privacy,
+    PersonalSkill:PersonalSkill,
+    Support:Support,
+    Resume:Resume
     // PaymentDetails:PaymentDetails,
     // SearchDetails: SearchDetails,
     // JobHome: JobHome,

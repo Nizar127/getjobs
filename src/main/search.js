@@ -28,7 +28,7 @@ export default class Search extends Component {
     static navigationOptions = {
       title: 'Search',
         tabBarIcon: ({ tintColor }) => (
-          <Icon name="md-search" style={{ color: tintColor }} />
+          <Icon name="md-search" style={{ color: tintColor}} size={20}/>
         ),
         headerTitle:{
            title: 'GET-THE-JOB'
@@ -48,9 +48,9 @@ export default class Search extends Component {
       
          <Header searchBar rounded>
             <Item>
-              <Icon name="ios-search" />
+              <Icon name="ios-search" size={30}/>
               <Input placeholder="Search" />
-              <Icon name="ios-people" />
+              <Icon name="ios-people" size={30} />
             </Item>
            <Button transparent>
              <Text>Search</Text>
@@ -92,7 +92,7 @@ export default class Search extends Component {
                     <Text note numberOfLines={1}>Personal</Text>
                   </Body>
                   <Right>
-                    <Button style={{padding: 5}} primary rounded onPress={() => this.props.navigation.navigate('userProfile')}>
+                    <Button style={{padding: 5}} primary rounded onPress={() => this.props.navigation.navigate('UserProfile')}>
                       <Text>Details</Text>
                     </Button>
                   </Right>
@@ -109,7 +109,7 @@ export default class Search extends Component {
                     <Text note numberOfLines={1}>Personal</Text>
                   </Body>
                   <Right>
-                  <Button style={{padding: 5}} primary rounded onPress={() => this.props.navigation.navigate('userProfile')}>
+                  <Button style={{padding: 5}} primary rounded onPress={() => this.props.navigation.navigate('UserProfile')}>
                       <Text>Details</Text>
                     </Button>
                   </Right>
@@ -126,7 +126,7 @@ export default class Search extends Component {
                     <Text note numberOfLines={1}>Personal</Text>
                   </Body>
                   <Right>
-                  <Button style={{padding: 5}} primary rounded onPress={() => this.props.navigation.navigate('userProfile')}>
+                  <Button style={{padding: 5}} primary rounded onPress={() => this.props.navigation.navigate('UserProfile')}>
                       <Text>Details</Text>
                     </Button>
                   </Right>
@@ -143,7 +143,7 @@ export default class Search extends Component {
                     <Text note numberOfLines={1}>Personal</Text>
                   </Body>
                   <Right>
-                  <Button style={{padding: 5}} primary rounded onPress={() => this.props.navigation.navigate('userProfile')}>
+                  <Button style={{padding: 5}} primary rounded onPress={() => this.props.navigation.navigate('UserProfile')}>
                       <Text>Details</Text>
                     </Button>
                   </Right>
@@ -160,7 +160,7 @@ export default class Search extends Component {
                     <Text note numberOfLines={1}>Personal</Text>
                   </Body>
                   <Right>
-                  <Button style={{padding: 5}} primary rounded onPress={() => this.props.navigation.navigate('userProfile')}>
+                  <Button style={{padding: 5}} primary rounded onPress={() => this.props.navigation.navigate('UserProfile')}>
                       <Text>Details</Text>
                     </Button>
                   </Right>
@@ -177,7 +177,7 @@ export default class Search extends Component {
                     <Text note numberOfLines={1}>Personal</Text>
                   </Body>
                   <Right>
-                  <Button style={{padding: 5}} primary rounded onPress={() => this.props.navigation.navigate('userProfile')}>
+                  <Button style={{padding: 5}} primary rounded onPress={() => this.props.navigation.navigate('UserProfile')}>
                       <Text>Details</Text>
                     </Button>
                   </Right>
@@ -194,7 +194,7 @@ export default class Search extends Component {
                     <Text note numberOfLines={1}>Personal</Text>
                   </Body>
                   <Right>
-                  <Button style={{padding: 5}} primary rounded onPress={() => this.props.navigation.navigate('userProfile')}>
+                  <Button style={{padding: 5}} primary rounded onPress={() => this.props.navigation.navigate('UserProfile')}>
                       <Text>Details</Text>
                     </Button>
                   </Right>
@@ -211,7 +211,7 @@ export default class Search extends Component {
                     <Text note numberOfLines={1}>Personal</Text>
                   </Body>
                   <Right>
-                  <Button style={{padding: 5}} primary rounded onPress={() => this.props.navigation.navigate('userProfile')}>
+                  <Button style={{padding: 5}} primary rounded onPress={() => this.props.navigation.navigate('UserProfile')}>
                       <Text>Details</Text>
                     </Button>
                   </Right>
@@ -228,7 +228,7 @@ export default class Search extends Component {
                     <Text note numberOfLines={1}>Personal</Text>
                   </Body>
                   <Right>
-                  <Button style={{padding: 5}} primary rounded onPress={() => this.props.navigation.navigate('userProfile')}>
+                  <Button style={{padding: 5}} primary rounded onPress={() => this.props.navigation.navigate('UserProfile')}>
                       <Text>Details</Text>
                     </Button>
                   </Right>

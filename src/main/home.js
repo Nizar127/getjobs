@@ -26,16 +26,24 @@ import SplashScreen from 'react-native-splash-screen';
 
 export default class Home extends Component {
 
-  componentDidMount(){
-    SplashScreen.hide();
+   constructor() {
+     super();
+     this.state = {
+       show: true,
+     };
+   }
 
-    
+  componentDidMount(){
+    SplashScreen.hide();  
   }
+
+  
+
 
   static navigationOptions = {
     title: 'Feed',
       tabBarIcon: ({ tintColor }) => (
-        <Icon name="md-compass" style={{ color: tintColor }} />
+        <Icon name="md-compass" style={{ color: tintColor}} size={20} />
       ),
       headerTitle:{
          title: 'GET-THE-JOB'
@@ -49,12 +57,31 @@ export default class Home extends Component {
     },
   }
 
+  renderSuccess = () => {
+    if(this.state.show == true){
+      this.setState({show: false});
+    } else {
+      this.setState({show: true});
+    }
+  };
+
   render(){
    
     return(
       <ScrollView>
       <Container>
-      <ScrollView>
+        {this.state.show ? (
+          <Card style={{height: 20}}>
+              <CardItem>
+                    <Button transparent style={{fontSize: 20, fontWeight: 'bold', fontFamily: 'Montserrat-Regular'}}>
+                        <Text>
+                            Your Application Have Been Send!
+                        </Text>
+                        <Icon name = "md-checkmark-circle" style={{iconSize: 20, backgroundColor: '#3BFD0F'}}/>
+                    </Button>
+              </CardItem>
+          </Card>
+        ) : null}
        <Container style={{margin: 4, padding: 2}}> 
         <Content>
         <Separator style={{marginBottom: 10}}>
@@ -76,7 +103,7 @@ export default class Home extends Component {
                </CardItem>
              <CardItem style={{justifyContent: 'center'}}>
               
-                  <Button rounded primary onPress={() => this.props.navigation.navigate('CarouselMap')} >
+                  <Button rounded primary onPress={this.renderSuccess}>
                         <Text>Book Now</Text>
                     </Button>  
                         
@@ -121,7 +148,7 @@ export default class Home extends Component {
       
 
       </Container>
-       </ScrollView>
+       
 
 
 

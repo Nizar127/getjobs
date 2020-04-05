@@ -71,9 +71,9 @@ export default class ProgressList extends Component {
           <Container>
             <Header
                 placement="left"
-                leftComponent={{ icon: 'menu', color: '#fff' }}
+                leftComponent={{ icon: 'md-menu', color: '#fff' }}
                 centerComponent={{ text: 'Job Progress', style: { color: '#fff' } }}
-                rightComponent={{ icon: 'home', color: '#fff' }}
+                rightComponent={{ icon: 'md-home', color: '#fff' }}
             />
     <ScrollView>   
          <View>

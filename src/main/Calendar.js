@@ -30,7 +30,7 @@ export default class Calendar extends Component {
   static navigationOptions = {
     title: 'Calendar',
       tabBarIcon: ({ tintColor }) => (
-        <Icon android name="md-calendar" style={{ color: tintColor }} />
+        <Icon android name="md-calendar" style={{ color: tintColor }} size={30} />
       ),
       headerTitle:{
          title: 'GET-THE-JOB'

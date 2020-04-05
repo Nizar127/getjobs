@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, ScrollView, Image} from 'react-native';
+import {StyleSheet, ScrollView, Dimensions, Image} from 'react-native';
 import { 
     Container, 
     Header, 
@@ -15,10 +15,10 @@ import {
     Body,  
     List,
     ListItem,
-    Separator,
+    Separator, 
     Button } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
-
+const { width } = Dimensions.get("window");
 
 
 export default class FeedDetail extends Component {
@@ -111,19 +111,31 @@ export default class FeedDetail extends Component {
                 <CardItem header bordered>
                     <Text>Key Player</Text>
                 </CardItem>
-                <CardItem cardBody style={{flex:1, flexDirection: 'row', padding: 10, margin: 5, alignContent: 'space-around', justifyContent: 'space-between', alignItems:'center', marginLeft: 5}}>
-                              <Thumbnail large source={require('../../img/dude.jpg')} style={{padding: 10}}/>
-                              <Thumbnail large source={require('../../img/dude.jpg')} style={{padding: 10}}/>
-                              <Thumbnail large source={require('../../img/dude.jpg')} style={{padding: 10}}/>
-                              <Thumbnail large source={require('../../img/dude.jpg')} style={{padding: 10}}/>
-                              <Thumbnail large source={require('../../img/dude.jpg')} style={{padding: 10}}/>
-
-      
-                    </CardItem>
+                <ScrollView horizontal={true}>
+                            <CardItem cardBody style={{flex:1, flexDirection: 'row', padding: 10, margin: 5, alignContent: 'space-around', justifyContent: 'space-between', alignItems:'center', marginLeft: 5}}>
+                                       <Thumbnail large source={require('../../img/dude.jpg')} style={{padding: 10}}/>
+                                       <Thumbnail large source={require('../../img/dude.jpg')} style={{padding: 10}}/>
+                                       <Thumbnail large source={require('../../img/dude.jpg')} style={{padding: 10}}/>
+                                       <Thumbnail large source={require('../../img/dude.jpg')} style={{padding: 10}}/>
+                                       <Thumbnail large source={require('../../img/dude.jpg')} style={{padding: 10}}/>
+         
+               
+                             </CardItem>
+                </ScrollView>
+ 
             </Card>
 
             </ScrollView>
-
+             <Card style={{width: width, height: 60, padding: 10, justifyContent:'center', borderColor: 'grey'}}>
+                <CardItem>
+                    <Left>
+                        <Text>RM 500</Text><Text>/</Text><Text>day</Text>
+                    </Left>
+                    <Right>
+                        <Button danger style={{borderRadius: 12}}><Text>Apply</Text></Button>
+                    </Right>
+                </CardItem>
+             </Card>
 
             
          </Container>

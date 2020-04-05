@@ -324,17 +324,18 @@ import {
     List,
     ListItem,
     Separator,
+    Switch,
     Button } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
 
-export default class FeedDetail extends Component {
+export default class Profile extends Component {
   
     static navigationOptions = {
       title: 'Profile',
         tabBarIcon: ({ tintColor }) => (
-          <Icon name="md-person" style={{ color: tintColor }} />
+          <Icon name="md-person" style={{ color: tintColor}} size={20} />
         ),
         headerTitle:{
            title: 'GET-THE-JOB'
@@ -353,23 +354,154 @@ export default class FeedDetail extends Component {
           <Container>
 
          <ScrollView>   
-             <Card >
+            <Card >
              <CardItem cardBody>
-                <Image source={require('../../img/kambing.jpg')} style={{height: 200, width: null, flex: 1}}/>
-              
-            </CardItem>
-            <CardItem>
-               <Body>
-                 <Text>Creative World Industries</Text>
+                 <Left>
+                     <Thumbnail large source={require('../../img/kambing.jpg')} style={{height: 110, width: null, flex: 1}}/>
+                 </Left>
+                 <Body>
+                    <Text>Creative World Industries</Text>
                 </Body>
-            </CardItem>
+                    <Button transparent onPress={() => this.props.navigation.navigate('ViewProfile')} style={{paddingLeft:10, padding: 3}}><Text>View Profile</Text></Button>
+               </CardItem>
+            </Card>
                  {/* <CardItem>   
                      <Text style={{marginTop: 5, marginBottom: 5}}>Creative World Industries</Text>
                 </CardItem> */}
                 
-            </Card>
+           <Card>
+           <Container>
+           
+           
+           <Content>
+           <Separator>
+             <Text style={{fontSize: 20, justifyContent: 'center'}}>Account Settings</Text>           
+         </Separator>
+         <List style={styles.listitem}>
+           <ListItem onPress={() => this.props.navigation.navigate('Personal')}> 
+           <Left><Text>Personal Information</Text></Left>
+             <Right>
+                 <Icon active name="md-person" size={30}/>
+           </Right>
+           </ListItem>
+           <ListItem onPress={() => this.props.navigation.navigate('Resume')}>
+           <Left><Text>Resume</Text></Left>
+             <Right>
+             <Icon active name="md-briefcase" size={30}/>
+           </Right>
+           </ListItem>
+           <ListItem onPress={() => this.props.navigation.navigate('PaymentSetting')}>
+             <Left><Text>Payments</Text></Left>
+             <Right>
+                <Icon active name="md-wallet" size={30} />
+           </Right>
+           </ListItem>
+           <ListItem onPress={() => this.props.navigation.navigate('Privacy')}>
+             <Left><Text>Privacy Settings</Text></Left>
+             <Right>
+                <Icon active name="md-unlock" size={30} />
+           </Right>
+           </ListItem>
+           <ListItem>
+              <Left>
+                <Body>
+                 <Text>Print Receipt</Text>
+                 <Text note>Toggle to Switch Auto or Manual</Text>
+               </Body>
+              </Left>
+              <Right>
+                   <Switch selected={true}/>
+             </Right>
+           </ListItem>
+           <ListItem>
+              <Left><Text>Rewards</Text></Left>
+              <Right>
+                <Icon active name="md-cash" size={30}/>
+              </Right>
+           </ListItem>
+         </List>
+          {/* this is for setting multiskill Workforce */}
+         <Separator>
+             <Text style={{fontSize: 20, justifyContent: 'center'}}>Multi-Skills Workforce</Text>           
+         </Separator>
+         <List style={styles.listitem}>
+           <ListItem onPress={() => this.props.navigation.navigate('PersonalSkill')}> 
+             <Left><Text>List Your Skills</Text></Left>
+             <Right>
+                 <Icon active name="md-person" size={30}/>
+           </Right>
+           </ListItem>
+           <ListItem onPress={() => this.props.navigation.navigate('JobType')}>
+           <Left><Text>Job Type</Text></Left>
+             <Right>
+             <Icon active name="md-briefcase" size={30}/>
+           </Right>
+           </ListItem>
+           <ListItem onPress={() => this.props.navigation.navigate('WorkSkill')}>
+             <Left><Text>Learn About Multi-Skills Workforce</Text><Text note>Earn Up to RM 3,000 per month</Text></Left>
+             <Right>
+                <Icon active name="md-cash" size={30} />
+           </Right>
+           </ListItem>
+
+         </List>
+         <Separator>
+             <Text style={{fontSize: 20, justifyContent: 'center'}}>Support</Text>           
+         </Separator>
+         <List style={styles.listitem}>
+           <ListItem onPress={() => this.props.navigation.navigate('Support')}> 
+           <Left><Text>Safety Centre</Text><Text note>Get the Support you need as well as Labor Union help</Text></Left>
+             <Right>
+                 <Icon active name="md-person" size={30}/>
+           </Right>
+           </ListItem>
+           <ListItem onPress={() => this.props.navigation.navigate('Contact')}>
+           <Left><Text>Get Help</Text></Left>
+             <Right>
+             <Icon active name="md-briefcase" size={30}/>
+           </Right>
+           </ListItem>
+           <ListItem onPress={() => this.props.navigation.navigate('PaymentMethod')}>
+             <Left><Text>Please Give Us Your Feedback</Text></Left>
+             <Right>
+                <Icon active name="md-wallet" size={30}/>
+           </Right>
+           </ListItem>
+         </List>
+         <Separator>
+             <Text style={{fontSize: 20, justifyContent: 'center'}}>Legal</Text>           
+         </Separator>
+         <List style={styles.listitem}>
+           <ListItem onPress={() => this.props.navigation.navigate('Terms')}> 
+           <Left><Text>Terms of Service</Text></Left>
+             <Right>
+                 <Icon active name="md-person" size={30}/>
+           </Right>
+           </ListItem>
+           <ListItem onPress={() => this.props.navigation.navigate('Privacy')}>
+           <Left><Text>Privacy Policy</Text></Left>
+             <Right>
+             <Icon active name="md-briefcase" size={30}/>
+           </Right>
+           </ListItem>
+         </List>
+         <List>
+             <ListItem onPress={() => this.props.navigation.navigate('Logout')}>
+                 <Left><Text>Logout</Text></Left>
+             </ListItem>
+         </List>
+       </Content>
+       </Container>
+    </Card>
+
+    <Container>
+        <Content styles={{justifyContent: 'center'}}>
+             <Text>Developed by Ahmad Fakhrul Nizar Bin Ab Ghani</Text>
+             <Text>All Right Reserved</Text>
+        </Content>
+    </Container>
         
-            <Card style={{height: 200}}>
+            {/* <Card style={{height: 200}}>
                 <CardItem header bordered>
                     <Text>About Us</Text>
                 </CardItem>
@@ -428,7 +560,7 @@ export default class FeedDetail extends Component {
 
       
                     </CardItem>
-            </Card>
+            </Card> */}
 
             </ScrollView>
 
@@ -443,5 +575,21 @@ export default class FeedDetail extends Component {
     }
   }
   
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      backgroundColor: '#fff',
+      justifyContent: 'center',
+      paddingTop: 10,
+      paddingBottom:10
+    },
+   listitem: {
+       fontFamily: 'Montserrat-Regular',
+       fontSize: 15,
+       
+   }
 
- 
+  });
+  
+  

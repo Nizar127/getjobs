@@ -20,43 +20,55 @@ import {
     Tabs,
     Tab,
     TabHeading,
-    ActionSheet,
     Button } from 'native-base';
+import  ActionSheet from 'react-native-actionsheet';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import JobComplete from './jobComplete';
 import OnGoingJob from './OnGoingJob';
 import AvailabiltyView from './availabilityView';
-var BUTTONS = [
-  { text: "Urgent", icon: "american-football", iconColor: "#2c8ef4" },
-  { text: "Part Time", icon: "analytics", iconColor: "#f42ced" },
-  { text: "Contract", icon: "aperture", iconColor: "#ea943b" },
-  { text: "Per KPI", icon: "aperture", iconColor: "#ea943b" },
-  { text: "Hire As You Need", icon: "aperture", iconColor: "#ea943b" },
-];
 
 
-export default class Profile extends Component {
+// var BUTTONS = [
+//   { text: "Urgent", icon: "american-football", iconColor: "#2c8ef4" },
+//   { text: "Part Time", icon: "analytics", iconColor: "#f42ced" },
+//   { text: "Contract", icon: "aperture", iconColor: "#ea943b" },
+//   { text: "Per KPI", icon: "aperture", iconColor: "#ea943b" },
+//   { text: "Hire As You Need", icon: "aperture", iconColor: "#ea943b" },
+// ];
+
+const options = ['Urgent', 'Part-Time', 'Contract', 'Per Milestone', 'Hire-As-You-Need' ];
+const title = 'Please Pick Your Work Requirement';
+
+export default class UserProfile extends Component {
   
-    static navigationOptions = {
-      title: 'Profile',
-        tabBarIcon: ({ tintColor }) => (
-          <Icon name="person" style={{ color: tintColor }} />
-        ),
-        headerTitle:{
-           title: 'GET-THE-JOB'
-        },
-      headerStyle: {
-      backgroundColor: '#f45fff',
-    },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-          fontWeight: 'bold',
-      },
-    }
+    // static navigationOptions = {
+    //   title: 'Profile',
+    //     tabBarIcon: ({ tintColor }) => (
+    //       <Icon name="person" style={{ color: tintColor }} />
+    //     ),
+    //     headerTitle:{
+    //        title: 'GET-THE-JOB'
+    //     },
+    //   headerStyle: {
+    //   backgroundColor: '#f45fff',
+    // },
+    //   headerTintColor: '#fff',
+    //   headerTitleStyle: {
+    //       fontWeight: 'bold',
+    //   },
+    // }
 
     constructor(props){
       super(props);
-      this.state = {};
+      
+
+      showActionSheet = () => {
+        this.ActionSheet.show()
+      }
+
+      handlePress = (buttonIndex) => {
+        this.setState({selected:buttonIndex})
+      }
     }
   
     render() {
@@ -70,30 +82,41 @@ export default class Profile extends Component {
                         Profile
                     </Text>
                     <Right style={{ marginTop: 20}}>
-                        <Button success onPress={() =>
+                      <Button success onPress={() => this.showActionSheet}><Text>REQUEST</Text></Button>
+                      <ActionSheet 
+                         ref={o => {this.ActionSheet = o}}
+                         title={title}
+                         options={options}
+                         onPress={this.handlePress}
+                      />
+                      
+                        
+               
+                        {/* <Button success onPress={() =>
                           ActionSheet.show(
                           {
                               options: BUTTONS,
                            title: "Please Pick Your Work Requirement"
                          },
                            buttonIndex => {
+
                               this.setState({ clicked: BUTTONS[buttonIndex] });
                            }
                         )}>
                             <Text>REQUEST</Text>
-                        </Button>
+                        </Button> */}
 
                     </Right>
                 </CardItem>
                 <CardItem style={{marginTop: 5}} >
-                     <Thumbnail large source={require('../../img/kambing.jpg')} style={{height: 90, alignSelf: 'center'}}/>
+                     <Thumbnail large source={require('../../../img/kambing.jpg')} style={{height: 90, alignSelf: 'center'}}/>
                      <Right><Text style={{color: 'green', marginStart: 10, marginEnd: 5}}>90% Job Rate</Text></Right>
                      </CardItem>
                      <CardItem>
                        <Text>James Corden</Text>
                     </CardItem>
                     <CardItem>
-                       <Text note><Icon name="pin"/> Kuala Terengganu, Malaysia</Text>
+                       <Text note><Icon name="md-pin" size={30}/> Kuala Terengganu, Malaysia</Text>
                      </CardItem>
                      <CardItem style={{justifyContent: 'center', margin: 30}}>
                      <Button rounded 
