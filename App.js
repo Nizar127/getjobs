@@ -11,6 +11,10 @@ import Search from './src/main/search';
 import Manage from './src/main/Manage';
 import Calendar from './src/main/Calendar';
 import Profile from './src/main/profile';
+import Scan from './src/main/Scan';
+
+import QRScanner from './src/screen/Scanner/QRScanner';
+
 import Notification from './src/screen/drawer/notifications';
 import Payment from './src/screen/drawer/payment';
 import Account from './src/screen/drawer/account_settings';
@@ -51,7 +55,8 @@ import Reward from './src/screen/account/Reward';
 const DashboardTabNavigator = createBottomTabNavigator(
   {
     Home: Home,
-    Search: Search,
+    //Search: Search,
+    Scan:Scan,
     Manage: Manage,
     Calendar: Calendar,
     Profile: Profile
@@ -85,7 +90,8 @@ const DashboardStackNavigator = createStackNavigator(
     Privacy:Privacy,
     PersonalSkill:PersonalSkill,
     Support:Support,
-    Resume:Resume
+    Resume:Resume,
+    QRScanner:QRScanner
     // PaymentDetails:PaymentDetails,
     // SearchDetails: SearchDetails,
     // JobHome: JobHome,

@@ -12,7 +12,7 @@ export default class Privacy extends React.Component {
       return (
   
         <Container>
-            <Header>
+            <Header transparent>
               <Left>
                 <Button transparent onPress={()=> this.props.navigation.goBack()}>
                     <Icon name='arrow-back' size={40}/>         

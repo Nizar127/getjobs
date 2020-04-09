@@ -373,7 +373,7 @@ export default class Profile extends Component {
            <Container>
            
            
-           <Content>
+           <Content style={{padding:15}}>
            <Separator>
              <Text style={{fontSize: 20, justifyContent: 'center'}}>Account Settings</Text>           
          </Separator>

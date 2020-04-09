@@ -24,11 +24,13 @@ export default class CarouselMap extends Component {
   state = {
     markers: [],
     coordinates: [
-      { name: 'Programmers', latitude: 3.098790, longitude: 101.644920, image: require('../../img/coding.jpg') },
-      { name: 'Project Manager', latitude: 3.149943, longitude: 101.660357, image: require('../../img/project_manager.jpg') },
-      { name: 'Office Temp Work', latitude: 3.130880, longitude: 101.679604, image: require('../../img/startup_culture.jpg') },
-      { name: 'Manual Labor', latitude: 3.182166, longitude: 101.678381, image: require('../../img/labour.jpg') },
-      { name: 'Restaurant Waiter', latitude: 3.140173, longitude: 101.662588, image: require('../../img/waiter.jpg') },
+      { name: 'Programmers', payment:'RM 20/hour', type: 'Contract', latitude: 3.098790, longitude: 101.644920, image: require('../../img/coding.jpg') },
+      { name: 'Project Manager', payment:'RM 500', type: 'Freelance',latitude: 3.149943, longitude: 101.660357, image: require('../../img/project_manager.jpg') },
+      { name: 'Office Temp Work', payment:'RM 1200/month', type:'Part-Time',latitude: 3.130880, longitude: 101.679604, image: require('../../img/startup_culture.jpg') },
+      { name: 'Manual Labor', payment:'RM 100/hour', type:'Hire-As-Needed', latitude: 3.182166, longitude: 101.678381, image: require('../../img/labour.jpg') },
+      { name: 'Restaurant Waiter', payment:'RM 40/hour', type:'Urgent', latitude: 3.140173, longitude: 101.662588, image: require('../../img/waiter.jpg') },
+      { name: 'Restaurant Waiter', payment:'RM 2500', type:'Per Milestones', latitude: 3.056733, longitude: 101.585121, image: require('../../img/waiter.jpg') },
+
     ]
   }
 
@@ -39,7 +41,7 @@ export default class CarouselMap extends Component {
   showWelcomeMessage = () =>
     Alert.alert(
       'Get to Know Nearby Job',
-      'Amazing Work, Amazing Wages',
+      'Amazing Work, Amazing Payment',
       [
         {
           text: 'Cancel',
@@ -116,6 +118,9 @@ export default class CarouselMap extends Component {
     <View style={styles.cardContainer}>
       <Text style={styles.cardTitle}>{item.name}</Text>
       <Image style={styles.cardImage} source={item.image} />
+      <Text style={styles.cardType}>{item.type}</Text>
+      <Text style={styles.cardPayment}>{item.payment}</Text>
+
     </View>
 
   render() {
@@ -207,12 +212,23 @@ const styles = StyleSheet.create({
     width: 220,
     bottom: 0,
     position: 'absolute',
-    borderBottomLeftRadius: 24,
-    borderBottomRightRadius: 24
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20
   },
   cardTitle: {
     color: 'white',
     fontSize: 22,
+    alignSelf: 'center'
+  },
+  cardPayment: {
+    color: 'white',
+    fontSize:15,
+    fontWeight: 'bold',
+    alignSelf: 'center'
+  },
+  cardType: {
+    color: 'white',
+    fontSize: 15,
     alignSelf: 'center'
   }
 });

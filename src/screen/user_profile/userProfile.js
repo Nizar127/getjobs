@@ -36,8 +36,8 @@ import AvailabiltyView from './availabilityView';
 //   { text: "Hire As You Need", icon: "aperture", iconColor: "#ea943b" },
 // ];
 
-const options = ['Urgent', 'Part-Time', 'Contract', 'Per Milestone', 'Hire-As-You-Need' ];
-const title = 'Please Pick Your Work Requirement';
+//const options = ['Urgent', 'Part-Time', 'Contract', 'Per Milestone', 'Hire-As-You-Need' ];
+//const title = 'Please Pick Your Work Requirement';
 
 export default class UserProfile extends Component {
   
@@ -85,8 +85,9 @@ export default class UserProfile extends Component {
                       <Button success onPress={() => this.showActionSheet}><Text>REQUEST</Text></Button>
                       <ActionSheet 
                          ref={o => {this.ActionSheet = o}}
-                         title={title}
-                         options={options}
+                         title={'Please Pick Your Work Requirement'}
+                         options={ ['Urgent', 'Part-Time', 'Contract', 'Per Milestone', 'Hire-As-You-Need', 'Cancel' ]}
+                         cancelButtonIndex={5}
                          onPress={this.handlePress}
                       />
                       

@@ -44,7 +44,7 @@ renderView() {
                
                 <Item rounded>
                     <Input placeholder='Rounded Textbox'/>
-                    <Button rounded onPress={this.renderView}>Flaunt Your Skill</Button>
+                    <Button rounded onPress={this.renderView}><Text>Flaunt Your Skill</Text></Button>
                 </Item>
                </Content>
             </Container>
