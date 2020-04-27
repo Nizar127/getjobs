@@ -12,8 +12,11 @@ import Manage from './src/main/Manage';
 import Calendar from './src/main/Calendar';
 import Profile from './src/main/profile';
 import Scan from './src/main/Scan';
-
 import QRScanner from './src/screen/Scanner/QRScanner';
+import ProgressBar from './src/screen/Manage/ProgressBar';
+import Collab from './src/screen/Manage/Collab';
+import TaskList from './src/screen/Manage/TaskList';
+import NewJob from './src/screen/Manage/NewJob';
 
 import Notification from './src/screen/drawer/notifications';
 import Payment from './src/screen/drawer/payment';
@@ -91,7 +94,11 @@ const DashboardStackNavigator = createStackNavigator(
     PersonalSkill:PersonalSkill,
     Support:Support,
     Resume:Resume,
-    QRScanner:QRScanner
+    QRScanner:QRScanner,
+    NewJob:NewJob,
+    TaskList:TaskList,
+    ProgressBar:ProgressBar,
+    Collab:Collab
     // PaymentDetails:PaymentDetails,
     // SearchDetails: SearchDetails,
     // JobHome: JobHome,
