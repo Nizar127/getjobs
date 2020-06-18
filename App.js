@@ -17,6 +17,7 @@ import ProgressBar from './src/screen/Manage/ProgressBar';
 import Collab from './src/screen/Manage/Collab';
 import TaskList from './src/screen/Manage/TaskList';
 import NewJob from './src/screen/Manage/NewJob';
+import ViewProfile from './src/screen/user_profile/ViewProfile';
 
 import Notification from './src/screen/drawer/notifications';
 import Payment from './src/screen/drawer/payment';
@@ -98,7 +99,8 @@ const DashboardStackNavigator = createStackNavigator(
     NewJob:NewJob,
     TaskList:TaskList,
     ProgressBar:ProgressBar,
-    Collab:Collab
+    Collab:Collab,
+    ViewProfile:ViewProfile,
     // PaymentDetails:PaymentDetails,
     // SearchDetails: SearchDetails,
     // JobHome: JobHome,
