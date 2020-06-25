@@ -329,10 +329,44 @@ import {
   Button
 } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
+import firestore from '@react-native-firebase/firestore';
+import { firebase } from '@react-native-firebase/auth';
+import { Alert } from 'react-native';
 
 
 
 export default class Profile extends Component {
+
+  constructor() {
+    super();
+
+    const user = firebase.auth().currentUser;
+    user.providerData.forEach((userInfo) => {
+      console.log('User info for provider: ', userInfo);
+    });
+
+    //if user dh wujud, just alert
+    if (user == null) {
+      firebase.firestore().collection('Users').doc(user.uid).collection('Job_Seeker').set({
+        uid: user.uid,
+        username: user.email,
+        email: user.email,
+        phoneNumber: user.phoneNumber,
+        profileImage: user.photoURL
+      }).then(() => {
+        firebase.firestore().collection('Users').doc(user.uid).get().then(data => { console.log(data) })
+      });
+    } else {
+      console.log('Data Already Exist');
+      //Alert.alert('Data already exist');
+    }
+
+
+    // this.state ={
+    //   profileImage: '',
+
+    // }
+  }
 
   static navigationOptions = {
     title: 'Profile',
@@ -359,7 +393,7 @@ export default class Profile extends Component {
           <Card >
             <CardItem cardBody>
               <Left>
-                <Thumbnail large source={require('../../img/kambing.jpg')} style={{ height: 110, width: null, flex: 1 }} />
+                <Thumbnail large source={{ uri: this.state.profileImage }} style={{ height: 110, width: null, flex: 1 }} />
               </Left>
               <Body>
                 <Text>Creative World Industries</Text>

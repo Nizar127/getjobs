@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
-import {SafeAreaView, View, Text, Image} from 'react-native';
+import React, { Component } from 'react';
+import { SafeAreaView, View, Text, Image } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
-import { createSwitchNavigator,createAppContainer } from 'react-navigation';
+import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import {createBottomTabNavigator} from 'react-navigation-tabs';
-import {createDrawerNavigator, DrawerItems} from 'react-navigation-drawer';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createDrawerNavigator, DrawerItems } from 'react-navigation-drawer';
 import Home from './src/main/home'
 import CarouselMap from './src/main/CarouselMap';
 import Search from './src/main/search';
@@ -41,6 +41,11 @@ import WorkSkill from './src/screen/account/WorkSkill';
 import Support from './src/screen/account/Support';
 import PaymentSetting from './src/screen/account/PaymentSetting';
 import Reward from './src/screen/account/Reward';
+import GoogleLogin from './src/screen/auth/googlelogin';
+import Loading from './src/loading';
+import UserProfileDetail from './src/main/UserProfileDetail'
+
+console.disableYellowBox = true;
 
 // const AppStack = createStackNavigator({
 //   Home: Home,
@@ -60,12 +65,12 @@ const DashboardTabNavigator = createBottomTabNavigator(
   {
     Home: Home,
     //Search: Search,
-    Scan:Scan,
+    Scan: Scan,
     Manage: Manage,
     Calendar: Calendar,
     Profile: Profile
   },
-  
+
   {
     navigationOptions: ({ navigation }) => {
       const { routeName } = navigation.state.routes[navigation.state.index];
@@ -79,28 +84,31 @@ const DashboardStackNavigator = createStackNavigator(
   {
     DashboardTabNavigator: DashboardTabNavigator,
     CarouselMap: CarouselMap,
-    FeedDetail:FeedDetail,
+    FeedDetail: FeedDetail,
     ProgressList: ProgressList,
     AvailabilityView: AvailabilityView,
     OnGoingJob: OnGoingJob,
     JobComplete: JobComplete,
     UserProfile: UserProfile,
-    Personal:Personal,
-    WorkSkill:WorkSkill,
-    PaymentSetting:PaymentSetting,
-    Contact:Contact,
-    Reward:Reward,
-    JobType:JobType,
-    Privacy:Privacy,
-    PersonalSkill:PersonalSkill,
-    Support:Support,
-    Resume:Resume,
-    QRScanner:QRScanner,
-    NewJob:NewJob,
-    TaskList:TaskList,
-    ProgressBar:ProgressBar,
-    Collab:Collab,
-    ViewProfile:ViewProfile,
+    Personal: Personal,
+    WorkSkill: WorkSkill,
+    PaymentSetting: PaymentSetting,
+    Contact: Contact,
+    Reward: Reward,
+    JobType: JobType,
+    Privacy: Privacy,
+    PersonalSkill: PersonalSkill,
+    Support: Support,
+    Resume: Resume,
+    QRScanner: QRScanner,
+    NewJob: NewJob,
+    TaskList: TaskList,
+    ProgressBar: ProgressBar,
+    Collab: Collab,
+    ViewProfile: ViewProfile,
+    UserProfileDetail: UserProfileDetail,
+    GoogleLogin: GoogleLogin
+
     // PaymentDetails:PaymentDetails,
     // SearchDetails: SearchDetails,
     // JobHome: JobHome,
@@ -124,36 +132,36 @@ const DashboardStackNavigator = createStackNavigator(
             name="md-menu"
             size={30}
           />
-        
+
       };
     }
   }
 );
 
 const CustomDrawerContentComponent = (props) => (
-  <SafeAreaView style={{flex: 1}}>
-  <View style={{ height: 150, backgroundColor: 'white', alignItems: 'center', justifyContent: 'center'}}>
-      <Image source={require('./img/dude.jpg')} style={{height: 120, width: 120, borderRadius: 60}}/>
-  </View>
-  <View style={{justifyContent: 'center', alignItems:'center', fontSize: 20, fontWeight: 'bold'}}>
-    <Text style={{justifyContent: 'center', alignItems:'center', fontSize: 20, fontWeight: 'bold'}}>
-      Hamzah
+  <SafeAreaView style={{ flex: 1 }}>
+    <View style={{ height: 150, backgroundColor: 'white', alignItems: 'center', justifyContent: 'center' }}>
+      <Image source={require('./img/dude.jpg')} style={{ height: 120, width: 120, borderRadius: 60 }} />
+    </View>
+    <View style={{ justifyContent: 'center', alignItems: 'center', fontSize: 20, fontWeight: 'bold' }}>
+      <Text style={{ justifyContent: 'center', alignItems: 'center', fontSize: 20, fontWeight: 'bold' }}>
+        Hamzah
     </Text>
-  </View>
-  <View>
-    <DrawerItems {...props}/>
-  </View>
-</SafeAreaView>
+    </View>
+    <View>
+      <DrawerItems {...props} />
+    </View>
+  </SafeAreaView>
 )
 
 const AppDrawerNavigator = createDrawerNavigator({
   Dashboard: {
     screen: DashboardStackNavigator
   },
-  Notification:{
+  Notification: {
     screen: Notification
   },
-  Payment:{
+  Payment: {
     screen: Payment
   },
   // Messaging:{
@@ -162,18 +170,20 @@ const AppDrawerNavigator = createDrawerNavigator({
   Settings: {
     screen: Account
   },
-  
+
 
 },
-{
-  contentComponent: CustomDrawerContentComponent
-});
+  {
+    contentComponent: CustomDrawerContentComponent
+  });
 
 
 
 const AppSwitchNavigator = createSwitchNavigator({
-   //Login: { screen: Login},
+  //Login: { screen: Login},
   //Welcome: { screen: WelcomeScreen },
+  Loading: { screen: Loading },
+  // GoogleLogin: { screen: GoogleLogin },
   Dashboard: { screen: AppDrawerNavigator }
 });
 

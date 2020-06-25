@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, Image, Animated, Alert } from 'react-native';
+import { StyleSheet, Image, Animated, Alert, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
   Container,
@@ -20,38 +20,113 @@ import {
   Separator,
   Content
 } from 'native-base';
+import { ScrollView } from 'react-native-gesture-handler';
 import SplashScreen from 'react-native-splash-screen';
-import { db } from '../../config/firebase';
+//import { db } from '../../config/firebase';
+//import { addApplicant } from '../../config/firebase';
+import firestore from '@react-native-firebase/firestore';
 
-let job = db.ref('/Job');
+
+//let job = db.ref('/Job');
 
 
 export default class Home extends Component {
 
   constructor() {
     super();
+    this.applyRef = firestore().collection('Job_list');
     this.state = {
       show: true,
-      jobs: []
+      jobs: [],
+      jobname: '',
+      userId: '',
+      job_provider: '',
+
+
     };
   }
 
-  componentDidMount() {
-    SplashScreen.hide();
-    // job.on('value', (snapshot) => {
-    //   let data = snapshot.val();
-    //   if (data) {
-    //     let firebaseData = Object.values(data);
-    //     this.setState({ jobs: firebaseData });
-    //     console.log(this.state.jobs);
-    //   }
-    // });
+  //get the job creator name from uid
+  setJobProvider = (data) => {
+    this.setState({ job_provider: data })
 
   }
 
+  componentDidMount() {
+    //SplashScreen.hide();
+    this.unsubscribe = this.applyRef.onSnapshot(this.getCollection);
 
 
+  }
 
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+
+  // profileDetail = () => {
+  //   UserDetail = this.ProfileDetailRef.onSnapshot(this.getProfileCollection);
+  // }
+
+  // getProfileCollection = (querySnapshot) => {
+  //   const jobs = [];
+  //   querySnapshot.forEach((res) => {
+  //     const { username, profileImage, description, key_player, notable_project } = res.data();
+  //     jobs.push({
+  //       key: res.id,
+  //       res,
+  //       username,
+  //       profileImage,
+  //       description,
+  //       key_player,
+  //       notable_project
+  //     });
+  //   });
+  //   this.setState({
+  //     jobs,
+  //     isLoading: false
+  //   })
+  // }
+
+  getCollection = (querySnapshot) => {
+    const jobs = [];
+    querySnapshot.forEach((res) => {
+      const { jobname, uniqueId, jobCreatorName, jobdesc, worktype, lat, lng, url, salary, peoplenum, chosenDate, time, location } = res.data();
+      jobs.push({
+        key: res.id,
+        res,
+        jobCreatorName,
+        jobname,
+        uniqueId,
+        jobdesc,
+        lat,
+        lng,
+        url,
+        worktype,
+        salary,
+        peoplenum,
+        chosenDate,
+        time,
+        location
+      });
+    });
+    this.setState({
+      jobs,
+      isLoading: false
+    })
+  }
+
+
+  //use this to delete particular data once data has been send
+  // async deleteRow(secId, rowId, rowMap, data) {
+
+  //   await firebase.database().ref('contacts/' + data.key).set(null)
+
+  //   rowMap[`${secId}${rowId}`].props.closeRow();
+  //   var newData = [...this.state.listViewData];
+  //   newData.splice(rowId, 1)
+  //   this.setState({ listViewData: newData });
+
+  // }
   static navigationOptions = {
     title: 'Feed',
     tabBarIcon: ({ tintColor }) => (
@@ -77,13 +152,12 @@ export default class Home extends Component {
     }
   };
 
-  saveData = () => {
+  // saveData(){
+  //   let job = firebase.firestore().collection('Job_list').doc('JobCreatorName');
+  //   job = this.state.job_provider;
 
-  }
-  //get user info
-  //save into applicant table
-  //getjobs maker will use the table to appear it in hide alongside the info
-  //profile info including skills, apply for, 
+  // }
+
   sendApplication = () => {
     if (this.state.jobname && this.state.uniqueId && this.state.jobdesc && this.state.w) {
       addApplicant(this.state.jobname, this.state.uniqueId, this.state.jobdesc, this.state.worktype, this.state.salary, this.state.peoplenum, this.state.date, this.state.location);
@@ -114,35 +188,46 @@ export default class Home extends Component {
           <Text style={{ alignItems: 'center', justifyContent: 'center', fontSize: 20 }}>Available Job</Text>
         </Separator>
         <Container>
+          <Content padder>
+            <Text style={{ textAlign: "center", height: 40, fontWeight: "bold", marginTop: 20 }}>List of Available Job</Text>
+            <FlatList
+              data={this.state.jobs}
 
-          {this.state.show ? (
+              renderItem={({ item, index }) => {
+                return (
+                  <Card key={index} onPress={() => this.props.navigation.navigate('FeedDetail', {
+                    userkey: item.key
+                  })}>
+                    <CardItem><Text style={{ fontStyle: 'bold', margin: 10, textAlign: 'center', textColor: 'green' }}>{item.worktype}</Text></CardItem>
+                    <CardItem cardBody bordered button>
+                      <Image source={{ uri: item.url }} style={{ height: 200, width: null, flex: 1 }} />
+                    </CardItem>
+                    <CardItem>
+                      <Body>
+                        <Text>{item.jobname}</Text>
+                        <Text note>{item.jobCreatorName}</Text>
+
+                      </Body>
+                    </CardItem>
+                    <CardItem>
+                      <Text>RM  {item.salary}/job</Text>
+                    </CardItem>
+                    <CardItem style={{ justifyContent: 'center' }}>
+
+                      <Button rounded primary onPress={this.sendApplication}>
+                        <Text>Book Now</Text>
+                      </Button>
+                    </CardItem>
+                  </Card>
+                )
+              }}
+            />
+
+          </Content>
+          {/* {this.state.show ? (
 
 
-            <Card>
-              <CardItem cardBody bordered button onPress={() => this.props.navigation.navigate('FeedDetail')}>
-                <Image source={require('../../img/kambing.jpg')} style={{ height: 200, width: null, flex: 1 }} />
-              </CardItem>
-              <CardItem>
-                <Body>
-                  <Text>Catering Services</Text>
-                  <Text note>Global Ventures Industies</Text>
 
-                </Body>
-              </CardItem>
-              <CardItem>
-                <Text>This works well somehow</Text>
-              </CardItem>
-              <CardItem style={{ justifyContent: 'center' }}>
-
-                <Button rounded primary onPress={this.renderSuccess}>
-                  <Text>Book Now</Text>
-                </Button>
-
-
-
-              </CardItem>
-
-            </Card>
 
 
           ) :
@@ -155,10 +240,10 @@ export default class Home extends Component {
                   <Icon name="md-checkmark-circle" style={{ iconSize: 20, backgroundColor: '#3BFD0F' }} />
                 </Button>
               </CardItem>
-            </Card>}
+            </Card>} */}
 
           {/* : null} */}
-          <Container style={{ margin: 4, padding: 2 }}>
+          {/* <Container style={{ margin: 4, padding: 2 }}>
             <Content>
 
 
@@ -189,14 +274,14 @@ export default class Home extends Component {
 
                 </CardItem>
 
-              </Card>
+              </Card> */}
 
-            </Content>
-
-
+          {/* </Content> */}
 
 
-          </Container>
+
+
+          {/* </Container> */}
 
 
 

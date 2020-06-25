@@ -1,16 +1,34 @@
 import { db } from '../config/firebase';
+// import firestore from '@react-native-firebase/firestore';
+// import auth from '@react-native-firebase/auth';
 
-export const addJob = (jobname, jobdesc, worktype, salary, peoplenum, chosenDate, location) => {
-    db.ref('/Job').push({
-        jobname: jobname,
-        jobdesc: jobdesc,
-        worktype: worktype,
-        salary: salary,
-        peoplenum: peoplenum,
-        chosenDate: chosenDate,
-        location: location
-    }, () => this.props.navigation.navigate('UploadSuccess'));
-}
+// const applicantRef = firestore().collection("Applicant");
+
+// userID = firebase.auth().currentUser;
+
+// export const addApplicant = () => {
+//     applicantRef.add({
+//         jobname: jobname,
+//         userId: userID,
+//         userimage: userimage,
+//         userInfo: userInfo,
+//         jobtype: jobtype,
+//         jobtime: jobtime,
+//         jobdate: jobdate,
+//         location: location
+//     })
+// }
+// export const addJob = (jobname, jobdesc, worktype, salary, peoplenum, chosenDate, location) => {
+//     db.ref('/Job').push({
+//         jobname: jobname,
+//         jobdesc: jobdesc,
+//         worktype: worktype,
+//         salary: salary,
+//         peoplenum: peoplenum,
+//         chosenDate: chosenDate,
+//         location: location
+//     }, () => this.props.navigation.navigate('UploadSuccess'));
+// }
 
 // // export const updateStudent =  (name, matricno, major, year, status) => {
 // //     db.ref('/students').child(matricno).update({

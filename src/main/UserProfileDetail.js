@@ -22,7 +22,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 const { width } = Dimensions.get("window");
 
 
-export default class FeedDetail extends Component {
+export default class UserProfileDetail extends Component {
     constructor() {
         super();
         this.state = {
