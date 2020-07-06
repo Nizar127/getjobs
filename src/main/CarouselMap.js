@@ -24,12 +24,12 @@ export default class CarouselMap extends Component {
   state = {
     markers: [],
     coordinates: [
-      { name: 'Programmers', payment:'RM 20/hour', type: 'Contract', latitude: 3.098790, longitude: 101.644920, image: require('../../img/coding.jpg') },
-      { name: 'Project Manager', payment:'RM 500', type: 'Freelance',latitude: 3.149943, longitude: 101.660357, image: require('../../img/project_manager.jpg') },
-      { name: 'Office Temp Work', payment:'RM 1200/month', type:'Part-Time',latitude: 3.130880, longitude: 101.679604, image: require('../../img/startup_culture.jpg') },
-      { name: 'Manual Labor', payment:'RM 100/hour', type:'Hire-As-Needed', latitude: 3.182166, longitude: 101.678381, image: require('../../img/labour.jpg') },
-      { name: 'Restaurant Waiter', payment:'RM 40/hour', type:'Urgent', latitude: 3.140173, longitude: 101.662588, image: require('../../img/waiter.jpg') },
-      { name: 'Restaurant Waiter', payment:'RM 2500', type:'Per Milestones', latitude: 3.056733, longitude: 101.585121, image: require('../../img/waiter.jpg') },
+      { name: 'Programmers', payment: 'RM 20/hour', type: 'Contract', latitude: 3.098790, longitude: 101.644920, image: require('../../img/coding.jpg') },
+      { name: 'Project Manager', payment: 'RM 500', type: 'Freelance', latitude: 3.149943, longitude: 101.660357, image: require('../../img/project_manager.jpg') },
+      { name: 'Office Temp Work', payment: 'RM 1200/month', type: 'Part-Time', latitude: 3.130880, longitude: 101.679604, image: require('../../img/startup_culture.jpg') },
+      { name: 'Manual Labor', payment: 'RM 100/hour', type: 'Hire-As-Needed', latitude: 3.182166, longitude: 101.678381, image: require('../../img/labour.jpg') },
+      { name: 'Restaurant Waiter', payment: 'RM 40/hour', type: 'Urgent', latitude: 3.140173, longitude: 101.662588, image: require('../../img/waiter.jpg') },
+      { name: 'Restaurant Waiter', payment: 'RM 2500', type: 'Per Milestones', latitude: 3.056733, longitude: 101.585121, image: require('../../img/waiter.jpg') },
 
     ]
   }
@@ -145,8 +145,8 @@ export default class CarouselMap extends Component {
           />
           <Marker
             draggable
-            coordinate={{ latitude: 3.098790, longitude: 101.644920}}
-            image={require('../../img/chef.png')}>
+            coordinate={{ latitude: 3.098790, longitude: 101.644920 }}
+          >
 
             <Callout onPress={this.showWelcomeMessage}>
               <Text>An Interesting Job</Text>
@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
   },
   cardPayment: {
     color: 'white',
-    fontSize:15,
+    fontSize: 15,
     fontWeight: 'bold',
     alignSelf: 'center'
   },

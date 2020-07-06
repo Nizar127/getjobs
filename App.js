@@ -43,7 +43,8 @@ import PaymentSetting from './src/screen/account/PaymentSetting';
 import Reward from './src/screen/account/Reward';
 import GoogleLogin from './src/screen/auth/googlelogin';
 import Loading from './src/loading';
-import UserProfileDetail from './src/main/UserProfileDetail'
+import UserProfileDetail from './src/main/UserProfileDetail';
+import JobList from './src/main/JobList';
 
 console.disableYellowBox = true;
 
@@ -65,7 +66,8 @@ const DashboardTabNavigator = createBottomTabNavigator(
   {
     Home: Home,
     //Search: Search,
-    Scan: Scan,
+    JobList: JobList,
+    //Scan: Scan,
     Manage: Manage,
     Calendar: Calendar,
     Profile: Profile
